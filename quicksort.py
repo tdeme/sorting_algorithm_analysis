@@ -42,6 +42,20 @@ def quicksort(array):
 
     return quicksort(array[:lefti])+[pivot]+quicksort(array[lefti+1:])
 
+    '''if len(array)<=1 or (len(array)==2 and array[0]<=array[1]):
+    return array
+
+    pivot = array.pop(len(array)//2)
+    lows = []
+    highs = []
+    for num in array:
+        if num>pivot:
+            highs.append(num)
+        else:
+            lows.append(num)
+    
+    return quicksort(lows) + [pivot] + quicksort(highs)'''
+
 def main():
     array = generate_random_numbers(100, 100)
     print(array)
