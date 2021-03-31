@@ -24,15 +24,23 @@ def quicksort(array):
         return array
 
     pivot = array.pop(len(array)//2)
-    lows = []
-    highs = []
-    for num in array:
-        if num>pivot:
-            highs.append(num)
-        else:
-            lows.append(num)
-    
-    return quicksort(lows) + [pivot] + quicksort(highs)
+    array.append(pivot)
+
+    lefti = 0
+    righti = len(array)-2
+    while lefti<righti:
+        while array[lefti]<=pivot and lefti<len(array)-2:
+            lefti+=1
+        while array[righti]>pivot and righti>=0:
+            righti-=1
+        if lefti<righti:
+            array[lefti], array[righti] = array[righti], array[lefti]
+    if array[lefti]<pivot:
+        array[lefti-1], array[lefti] = array[lefti], array[lefti-1]
+    else:
+        array[lefti], array[-1] = array[-1], array[lefti]
+
+    return quicksort(array[:lefti])+[pivot]+quicksort(array[lefti+1:])
 
 def main():
     array = generate_random_numbers(100, 100)
