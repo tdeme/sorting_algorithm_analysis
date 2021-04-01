@@ -19,28 +19,35 @@ def generate_random_numbers(length, range_of_values):
     """
     return [random.randrange(range_of_values) for i in range(length)]
 
-def quicksort(array):
-    if len(array)<=1 or (len(array)==2 and array[0]<=array[1]):
-        return array
+def quicksort(array, start, stop):
+    if stop-start<1:
+        return
+    if stop-start==1:
+        if array[start]<=array[stop]:
+            return
+        else:
+            array[start], array[stop] = array[stop], array[start]
+            return
 
-    pivot = array.pop(len(array)//2)
-    array.append(pivot)
+    pivot = array[start]
 
-    lefti = 0
-    righti = len(array)-2
+    lefti = start+1
+    righti = stop
+
     while lefti<righti:
-        while array[lefti]<=pivot and lefti<len(array)-2:
+        while array[lefti]<pivot and lefti<righti:
             lefti+=1
-        while array[righti]>pivot and righti>=0:
+        while array[righti]>=pivot and righti>=lefti:
             righti-=1
         if lefti<righti:
             array[lefti], array[righti] = array[righti], array[lefti]
-    if array[lefti]<pivot:
-        array[lefti-1], array[lefti] = array[lefti], array[lefti-1]
+    if lefti==righti and array[lefti]<pivot:
+        array[start], array[lefti] = array[lefti], array[start]
     else:
-        array[lefti], array[-1] = array[-1], array[lefti]
+        array[start], array[righti] = array[righti], array[start]
 
-    return quicksort(array[:lefti])+[pivot]+quicksort(array[lefti+1:])
+    quicksort(array, start, righti-1)
+    quicksort(array, righti+1, stop)
 
     '''if len(array)<=1 or (len(array)==2 and array[0]<=array[1]):
     return array
@@ -60,8 +67,10 @@ def main():
     array = generate_random_numbers(100, 100)
     print(array)
     start = time.time()
-    print(quicksort(array))
+    quicksort(array, 0, 99)
     print(f'Time: {str(time.time()-start)}')
+    print(array)
+
 
 
 if __name__ == '__main__':

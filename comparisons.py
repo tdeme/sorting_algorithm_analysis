@@ -49,7 +49,7 @@ def runTests(n):
 
         arr = generate_random_numbers(i, i)
         quickstart = time.time()
-        quicked = quicksort(arr)
+        quicksort(arr, 0, i-1)
         quick_time = time.time()-quickstart
         quick_times.append(quick_time)
 
