@@ -29,26 +29,25 @@ def quicksort(array, start, stop):
             array[start], array[stop] = array[stop], array[start]
             return
 
-    pivot = array[start]
+    pivot = array[stop]
 
-    lefti = start+1
-    righti = stop
+    lefti = start
+    righti = stop-1
 
     while lefti<righti:
-        while array[lefti]<pivot and lefti<righti:
+        while array[lefti]<=pivot and lefti<=righti:
             lefti+=1
-        while array[righti]>=pivot and righti>=lefti:
+        while array[righti]>pivot and righti>lefti:
             righti-=1
         if lefti<righti:
             array[lefti], array[righti] = array[righti], array[lefti]
-    if lefti==righti and array[lefti]<pivot:
-        array[start], array[lefti] = array[lefti], array[start]
+    if lefti==righti and array[righti]>pivot:
+        array[righti], array[stop] = array[stop], array[righti]
     else:
-        array[start], array[righti] = array[righti], array[start]
+        array[stop], array[lefti] = array[lefti], array[stop]
 
-    quicksort(array, start, righti-1)
-    quicksort(array, righti+1, stop)
-
+    quicksort(array, start, lefti-1)
+    quicksort(array, lefti+1, stop)
     '''if len(array)<=1 or (len(array)==2 and array[0]<=array[1]):
     return array
 
@@ -64,12 +63,11 @@ def quicksort(array, start, stop):
     return quicksort(lows) + [pivot] + quicksort(highs)'''
 
 def main():
-    array = generate_random_numbers(100, 100)
-    print(array)
+    array = generate_random_numbers(100000, 100000)
     start = time.time()
-    quicksort(array, 0, 99)
+    quicksort(array, 0, 99999)
     print(f'Time: {str(time.time()-start)}')
-    print(array)
+    
 
 
 
