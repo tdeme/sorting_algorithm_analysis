@@ -26,7 +26,7 @@ def runTests(n):
     counting_times = []
     quick_times = []
 
-    for i in range(0, n, n//10):
+    for i in range(1, n, n//10):
         sizes.append(i)
 
         arr = generate_random_numbers(i, i)
@@ -49,7 +49,7 @@ def runTests(n):
 
         arr = generate_random_numbers(i, i)
         quickstart = time.time()
-        quicked = quicksort(arr)
+        quicksort(arr,0,i-1)
         quick_time = time.time()-quickstart
         quick_times.append(quick_time)
 
