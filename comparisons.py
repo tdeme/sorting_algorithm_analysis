@@ -14,6 +14,7 @@ from insertion_sort import insertion_sort
 from counting_sort import counting_sort
 from quicksort import quicksort
 import matplotlib.pyplot as plt
+import numpy as np
 
 def runTests(n):
     """This function times each sorting algorithm for different
@@ -47,7 +48,7 @@ def runTests(n):
         counting_time = time.time()-counting_start
         counting_times.append(counting_time)
 
-        arr = generate_random_numbers(i, i)
+        arr = np.array(generate_random_numbers(i, i))
         quickstart = time.time()
         quicksort(arr,0,i-1)
         quick_time = time.time()-quickstart

@@ -19,7 +19,7 @@ def generate_random_numbers(length, range_of_values):
     """
     return [random.randrange(range_of_values) for i in range(length)]
 
-cdef void _quicksort(int array[], const int start, const int stop):
+cpdef void quicksort(long[:] array, const int start, const int stop):
     if stop-start<1:
         return
     if stop-start==1:
@@ -45,19 +45,20 @@ cdef void _quicksort(int array[], const int start, const int stop):
     else:
         array[stop], array[lefti] = array[lefti], array[stop]
 
-    _quicksort(array, start, lefti-1)
-    _quicksort(array, lefti+1, stop)
+    quicksort(array, start, lefti-1)
+    quicksort(array, lefti+1, stop)
 
-def quicksort(array, first, last):
+'''def quicksort(array, first, last):
     cdef int arr[100000]
     cdef int start = first
     cdef int stop = last
-    for i in range(stop-start):
-        arr[start+i]=array[start+i]
+    for i, num in enumerate(array):
+        arr[i]=num
     _quicksort(arr, start, stop)
+    return list(arr)[:(stop-start)+1]
 
 
-    '''if len(array)<=1 or (len(array)==2 and array[0]<=array[1]):
+    if len(array)<=1 or (len(array)==2 and array[0]<=array[1]):
     return array
 
     pivot = array.pop(len(array)//2)
