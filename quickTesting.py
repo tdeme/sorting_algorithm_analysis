@@ -10,7 +10,6 @@ def main():
     print(f'Time: {str(time.time()-start)}')
     print(array[:10])
 
-
 if __name__ == '__main__':
     main()
               

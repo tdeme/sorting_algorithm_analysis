@@ -10,6 +10,9 @@ __version__ = '2021-03-15'
 
 import time
 import random
+import threading
+import numpy as np
+cimport numpy as np
 
 def generate_random_numbers(length, range_of_values):
     """Generates a list of "length" integers randomly
@@ -19,7 +22,7 @@ def generate_random_numbers(length, range_of_values):
     """
     return [random.randrange(range_of_values) for i in range(length)]
 
-cpdef void quicksort(long[:] array, const int start, const int stop):
+cpdef void quicksort(np.int64_t[:] array, const int start, const int stop):
     if stop-start<1:
         return
     if stop-start==1:
@@ -47,6 +50,7 @@ cpdef void quicksort(long[:] array, const int start, const int stop):
 
     quicksort(array, start, lefti-1)
     quicksort(array, lefti+1, stop)
+
 
 '''def quicksort(array, first, last):
     cdef int arr[100000]
