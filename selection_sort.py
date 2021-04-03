@@ -44,8 +44,8 @@ def display(a_list):
     
     
 def main():
-    NUM_OF_VALUES = 100
-    nums = generate_random_numbers(NUM_OF_VALUES, 1000)
+    NUM_OF_VALUES = 10
+    nums = generate_random_numbers(NUM_OF_VALUES, 10)
     display(nums)
     start = time.time()
     selection_sort(nums)
