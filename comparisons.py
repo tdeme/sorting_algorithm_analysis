@@ -26,6 +26,7 @@ def runTests(n):
     insertion_times = []
     counting_times = []
     quick_times = []
+    tim_times = []
 
     for i in range(1, n, n//10):
         sizes.append(i)
@@ -54,9 +55,15 @@ def runTests(n):
         quick_time = time.time()-quickstart
         quick_times.append(quick_time)
 
-    return sizes, selection_times, insertion_times, counting_times, quick_times
+        arr = generate_random_numbers(i, i)
+        timstart = time.time()
+        arr.sort()
+        tim_time = time.time()-timstart
+        tim_times.append(tim_time)
 
-def graphResults(sizes, selection_times, insertion_times, counting_times, quick_times):
+    return sizes, selection_times, insertion_times, counting_times, quick_times, tim_times
+
+def graphResults(sizes, selection_times, insertion_times, counting_times, quick_times, tim_times):
     plt.plot(sizes, selection_times)
     plt.suptitle('Selection Sort')
     plt.xlabel('Number of Values')
@@ -81,17 +88,24 @@ def graphResults(sizes, selection_times, insertion_times, counting_times, quick_
     plt.ylabel('Time to Sort (Seconds)')
     plt.show()
 
+    plt.plot(sizes, tim_times)
+    plt.suptitle('Tim Sort')
+    plt.xlabel('Number of Values')
+    plt.ylabel('Time to Sort (Seconds)')
+    plt.show()
+
 
 def main():
-    sizes, selection_times, insertion_times, counting_times, quick_times \
+    sizes, selection_times, insertion_times, counting_times, quick_times, tim_times \
     = runTests(10000)
 
     print(f'Selection times: {str(selection_times)}')
     print(f'Insertion times: {str(insertion_times)}')
     print(f'Counting times: {str(counting_times)}')
     print(f'Quick times: {str(quick_times)}')
+    print(f'Tim times: {str(tim_times)}')
 
-    graphResults(sizes, selection_times, insertion_times, counting_times, quick_times)
+    graphResults(sizes, selection_times, insertion_times, counting_times, quick_times, tim_times)
 
 
 if __name__=='__main__':
