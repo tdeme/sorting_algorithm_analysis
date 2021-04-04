@@ -133,6 +133,10 @@ def main():
     values, w, LINE_WIDTH = init_screen(NUM_OF_VALUES)
 
     quicksort(values, 0, 199, w, LINE_WIDTH)
+    
+    for value in values:
+        value.setColor('lime')
+        
     w.exitonclick()
     
 
