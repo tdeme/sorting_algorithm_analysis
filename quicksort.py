@@ -41,10 +41,8 @@ def quicksort(array, start, stop):
             righti-=1
         if lefti<righti:
             array[lefti], array[righti] = array[righti], array[lefti]
-    if lefti==righti and array[righti]>pivot:
-        array[righti], array[stop] = array[stop], array[righti]
-    else:
-        array[stop], array[lefti] = array[lefti], array[stop]
+
+    array[stop], array[lefti] = array[lefti], array[stop]
 
     quicksort(array, start, lefti-1)
     quicksort(array, lefti+1, stop)
@@ -63,10 +61,12 @@ def quicksort(array, start, stop):
     return quicksort(lows) + [pivot] + quicksort(highs)'''
 
 def main():
-    array = generate_random_numbers(100000, 100000)
+    array = generate_random_numbers(10, 10)
+    print(array)
     start = time.time()
-    quicksort(array, 0, 99999)
+    quicksort(array, 0, 9)
     print(f'Time: {str(time.time()-start)}')
+    print(array)
     
 
 
