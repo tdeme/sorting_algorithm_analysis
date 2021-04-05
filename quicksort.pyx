@@ -43,10 +43,8 @@ cpdef void quicksort(np.int64_t[:] array, const int start, const int stop):
             righti-=1
         if lefti<righti:
             array[lefti], array[righti] = array[righti], array[lefti]
-    if lefti==righti and array[righti]>pivot:
-        array[righti], array[stop] = array[stop], array[righti]
-    else:
-        array[stop], array[lefti] = array[lefti], array[stop]
+
+    array[stop], array[lefti] = array[lefti], array[stop]
 
     quicksort(array, start, lefti-1)
     quicksort(array, lefti+1, stop)

@@ -3042,7 +3042,7 @@ static void __pyx_f_9quicksort_quicksort(__Pyx_memviewslice __pyx_v_array, int c
  *             righti-=1
  *         if lefti<righti:             # <<<<<<<<<<<<<<
  *             array[lefti], array[righti] = array[righti], array[lefti]
- *     if lefti==righti and array[righti]>pivot:
+ * 
  */
     __pyx_t_1 = ((__pyx_v_lefti < __pyx_v_righti) != 0);
     if (__pyx_t_1) {
@@ -3051,8 +3051,8 @@ static void __pyx_f_9quicksort_quicksort(__Pyx_memviewslice __pyx_v_array, int c
  *             righti-=1
  *         if lefti<righti:
  *             array[lefti], array[righti] = array[righti], array[lefti]             # <<<<<<<<<<<<<<
- *     if lefti==righti and array[righti]>pivot:
- *         array[righti], array[stop] = array[stop], array[righti]
+ * 
+ *     array[stop], array[lefti] = array[lefti], array[stop]
  */
       __pyx_t_4 = __pyx_v_righti;
       __pyx_t_3 = -1;
@@ -3104,25 +3104,19 @@ static void __pyx_f_9quicksort_quicksort(__Pyx_memviewslice __pyx_v_array, int c
  *             righti-=1
  *         if lefti<righti:             # <<<<<<<<<<<<<<
  *             array[lefti], array[righti] = array[righti], array[lefti]
- *     if lefti==righti and array[righti]>pivot:
+ * 
  */
     }
   }
 
-  /* "quicksort.pyx":46
- *         if lefti<righti:
+  /* "quicksort.pyx":47
  *             array[lefti], array[righti] = array[righti], array[lefti]
- *     if lefti==righti and array[righti]>pivot:             # <<<<<<<<<<<<<<
- *         array[righti], array[stop] = array[stop], array[righti]
- *     else:
+ * 
+ *     array[stop], array[lefti] = array[lefti], array[stop]             # <<<<<<<<<<<<<<
+ * 
+ *     quicksort(array, start, lefti-1)
  */
-  __pyx_t_7 = ((__pyx_v_lefti == __pyx_v_righti) != 0);
-  if (__pyx_t_7) {
-  } else {
-    __pyx_t_1 = __pyx_t_7;
-    goto __pyx_L18_bool_binop_done;
-  }
-  __pyx_t_4 = __pyx_v_righti;
+  __pyx_t_4 = __pyx_v_lefti;
   __pyx_t_3 = -1;
   if (__pyx_t_4 < 0) {
     __pyx_t_4 += __pyx_v_array.shape[0];
@@ -3130,132 +3124,45 @@ static void __pyx_f_9quicksort_quicksort(__Pyx_memviewslice __pyx_v_array, int c
   } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
   if (unlikely(__pyx_t_3 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_3);
-    __PYX_ERR(0, 46, __pyx_L1_error)
+    __PYX_ERR(0, 47, __pyx_L1_error)
   }
-  __pyx_t_7 = (((*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) ))) > __pyx_v_pivot) != 0);
-  __pyx_t_1 = __pyx_t_7;
-  __pyx_L18_bool_binop_done:;
-  if (__pyx_t_1) {
-
-    /* "quicksort.pyx":47
- *             array[lefti], array[righti] = array[righti], array[lefti]
- *     if lefti==righti and array[righti]>pivot:
- *         array[righti], array[stop] = array[stop], array[righti]             # <<<<<<<<<<<<<<
- *     else:
- *         array[stop], array[lefti] = array[lefti], array[stop]
- */
-    __pyx_t_4 = __pyx_v_stop;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 47, __pyx_L1_error)
-    }
-    __pyx_t_5 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )));
-    __pyx_t_4 = __pyx_v_righti;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 47, __pyx_L1_error)
-    }
-    __pyx_t_6 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )));
-    __pyx_t_4 = __pyx_v_righti;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 47, __pyx_L1_error)
-    }
-    *((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )) = __pyx_t_5;
-    __pyx_t_4 = __pyx_v_stop;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 47, __pyx_L1_error)
-    }
-    *((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )) = __pyx_t_6;
-
-    /* "quicksort.pyx":46
- *         if lefti<righti:
- *             array[lefti], array[righti] = array[righti], array[lefti]
- *     if lefti==righti and array[righti]>pivot:             # <<<<<<<<<<<<<<
- *         array[righti], array[stop] = array[stop], array[righti]
- *     else:
- */
-    goto __pyx_L17;
+  __pyx_t_5 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )));
+  __pyx_t_4 = __pyx_v_stop;
+  __pyx_t_3 = -1;
+  if (__pyx_t_4 < 0) {
+    __pyx_t_4 += __pyx_v_array.shape[0];
+    if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_3);
+    __PYX_ERR(0, 47, __pyx_L1_error)
   }
+  __pyx_t_6 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )));
+  __pyx_t_4 = __pyx_v_stop;
+  __pyx_t_3 = -1;
+  if (__pyx_t_4 < 0) {
+    __pyx_t_4 += __pyx_v_array.shape[0];
+    if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_3);
+    __PYX_ERR(0, 47, __pyx_L1_error)
+  }
+  *((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )) = __pyx_t_5;
+  __pyx_t_4 = __pyx_v_lefti;
+  __pyx_t_3 = -1;
+  if (__pyx_t_4 < 0) {
+    __pyx_t_4 += __pyx_v_array.shape[0];
+    if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
+  } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
+  if (unlikely(__pyx_t_3 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_3);
+    __PYX_ERR(0, 47, __pyx_L1_error)
+  }
+  *((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )) = __pyx_t_6;
 
   /* "quicksort.pyx":49
- *         array[righti], array[stop] = array[stop], array[righti]
- *     else:
- *         array[stop], array[lefti] = array[lefti], array[stop]             # <<<<<<<<<<<<<<
- * 
- *     quicksort(array, start, lefti-1)
- */
-  /*else*/ {
-    __pyx_t_4 = __pyx_v_lefti;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 49, __pyx_L1_error)
-    }
-    __pyx_t_6 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )));
-    __pyx_t_4 = __pyx_v_stop;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 49, __pyx_L1_error)
-    }
-    __pyx_t_5 = (*((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )));
-    __pyx_t_4 = __pyx_v_stop;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 49, __pyx_L1_error)
-    }
-    *((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )) = __pyx_t_6;
-    __pyx_t_4 = __pyx_v_lefti;
-    __pyx_t_3 = -1;
-    if (__pyx_t_4 < 0) {
-      __pyx_t_4 += __pyx_v_array.shape[0];
-      if (unlikely(__pyx_t_4 < 0)) __pyx_t_3 = 0;
-    } else if (unlikely(__pyx_t_4 >= __pyx_v_array.shape[0])) __pyx_t_3 = 0;
-    if (unlikely(__pyx_t_3 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_3);
-      __PYX_ERR(0, 49, __pyx_L1_error)
-    }
-    *((__pyx_t_5numpy_int64_t *) ( /* dim=0 */ (__pyx_v_array.data + __pyx_t_4 * __pyx_v_array.strides[0]) )) = __pyx_t_5;
-  }
-  __pyx_L17:;
-
-  /* "quicksort.pyx":51
- *         array[stop], array[lefti] = array[lefti], array[stop]
+ *     array[stop], array[lefti] = array[lefti], array[stop]
  * 
  *     quicksort(array, start, lefti-1)             # <<<<<<<<<<<<<<
  *     quicksort(array, lefti+1, stop)
@@ -3263,7 +3170,7 @@ static void __pyx_f_9quicksort_quicksort(__Pyx_memviewslice __pyx_v_array, int c
  */
   __pyx_f_9quicksort_quicksort(__pyx_v_array, __pyx_v_start, (__pyx_v_lefti - 1), 0);
 
-  /* "quicksort.pyx":52
+  /* "quicksort.pyx":50
  * 
  *     quicksort(array, start, lefti-1)
  *     quicksort(array, lefti+1, stop)             # <<<<<<<<<<<<<<
@@ -3391,7 +3298,7 @@ static PyObject *__pyx_pf_9quicksort_2quicksort(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "quicksort.pyx":79
+/* "quicksort.pyx":77
  *     return quicksort(lows) + [pivot] + quicksort(highs)'''
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -3427,40 +3334,40 @@ static PyObject *__pyx_pf_9quicksort_4main(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "quicksort.pyx":80
+  /* "quicksort.pyx":78
  * 
  * def main():
  *     array = generate_random_numbers(100, 100)             # <<<<<<<<<<<<<<
  *     print(array)
  *     start = time.time()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_generate_random_numbers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_generate_random_numbers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_array = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "quicksort.pyx":81
+  /* "quicksort.pyx":79
  * def main():
  *     array = generate_random_numbers(100, 100)
  *     print(array)             # <<<<<<<<<<<<<<
  *     start = time.time()
  *     quicksort(array, 0, 99)
  */
-  if (__Pyx_PrintOne(0, __pyx_v_array) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_v_array) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
 
-  /* "quicksort.pyx":82
+  /* "quicksort.pyx":80
  *     array = generate_random_numbers(100, 100)
  *     print(array)
  *     start = time.time()             # <<<<<<<<<<<<<<
  *     quicksort(array, 0, 99)
  *     print(f'Time: {str(time.time()-start)}')
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -3475,35 +3382,35 @@ static PyObject *__pyx_pf_9quicksort_4main(CYTHON_UNUSED PyObject *__pyx_self) {
   }
   __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_start = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "quicksort.pyx":83
+  /* "quicksort.pyx":81
  *     print(array)
  *     start = time.time()
  *     quicksort(array, 0, 99)             # <<<<<<<<<<<<<<
  *     print(f'Time: {str(time.time()-start)}')
  *     print(array)
  */
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_int64_t(__pyx_v_array, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_5numpy_int64_t(__pyx_v_array, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 81, __pyx_L1_error)
   __pyx_f_9quicksort_quicksort(__pyx_t_4, 0, 99, 0);
   __PYX_XDEC_MEMVIEW(&__pyx_t_4, 1);
   __pyx_t_4.memview = NULL;
   __pyx_t_4.data = NULL;
 
-  /* "quicksort.pyx":84
+  /* "quicksort.pyx":82
  *     start = time.time()
  *     quicksort(array, 0, 99)
  *     print(f'Time: {str(time.time()-start)}')             # <<<<<<<<<<<<<<
  *     print(array)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -3518,34 +3425,34 @@ static PyObject *__pyx_pf_9quicksort_4main(CYTHON_UNUSED PyObject *__pyx_self) {
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Time, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Time, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "quicksort.pyx":85
+  /* "quicksort.pyx":83
  *     quicksort(array, 0, 99)
  *     print(f'Time: {str(time.time()-start)}')
  *     print(array)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  if (__Pyx_PrintOne(0, __pyx_v_array) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_v_array) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
 
-  /* "quicksort.pyx":79
+  /* "quicksort.pyx":77
  *     return quicksort(lows) + [pivot] + quicksort(highs)'''
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -18326,14 +18233,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "quicksort.pyx":80
+  /* "quicksort.pyx":78
  * 
  * def main():
  *     array = generate_random_numbers(100, 100)             # <<<<<<<<<<<<<<
  *     print(array)
  *     start = time.time()
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_int_100, __pyx_int_100); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_int_100, __pyx_int_100); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -18563,17 +18470,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__22);
   __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_quicksort_pyx, __pyx_n_s_generate_random_numbers, 17, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 17, __pyx_L1_error)
 
-  /* "quicksort.pyx":79
+  /* "quicksort.pyx":77
  *     return quicksort(lows) + [pivot] + quicksort(highs)'''
  * 
  * def main():             # <<<<<<<<<<<<<<
  *     array = generate_random_numbers(100, 100)
  *     print(array)
  */
-  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_array, __pyx_n_s_start); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_array, __pyx_n_s_start); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_quicksort_pyx, __pyx_n_s_main_2, 79, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_quicksort_pyx, __pyx_n_s_main_2, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 77, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -19099,46 +19006,46 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_generate_random_numbers, __pyx_t_1) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "quicksort.pyx":79
+  /* "quicksort.pyx":77
  *     return quicksort(lows) + [pivot] + quicksort(highs)'''
  * 
  * def main():             # <<<<<<<<<<<<<<
  *     array = generate_random_numbers(100, 100)
  *     print(array)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9quicksort_5main, NULL, __pyx_n_s_quicksort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9quicksort_5main, NULL, __pyx_n_s_quicksort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "quicksort.pyx":88
+  /* "quicksort.pyx":86
  * 
  * 
  * if __name__ == '__main__':             # <<<<<<<<<<<<<<
  *     main()
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_name_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_name_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "quicksort.pyx":89
+    /* "quicksort.pyx":87
  * 
  * if __name__ == '__main__':
  *     main()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_main_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_main_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "quicksort.pyx":88
+    /* "quicksort.pyx":86
  * 
  * 
  * if __name__ == '__main__':             # <<<<<<<<<<<<<<
