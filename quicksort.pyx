@@ -10,7 +10,6 @@ __version__ = '2021-03-15'
 
 import time
 import random
-import threading
 import numpy as np
 cimport numpy as np
 
@@ -44,7 +43,7 @@ cpdef void quicksort(np.int64_t[:] array, const int start, const int stop):
         if lefti<righti:
             array[lefti], array[righti] = array[righti], array[lefti]
 
-    array[stop], array[lefti] = array[lefti], array[stop]
+    array[lefti], array[stop] = array[stop], array[lefti]
 
     quicksort(array, start, lefti-1)
     quicksort(array, lefti+1, stop)

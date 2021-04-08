@@ -9,10 +9,8 @@ of selection_sort(), insertion_sort(), and quicksort().
 __author__ = 'Theo Demetriades'
 __version__ = '2021-03-18'
 
-from selection_sort import *
-from insertion_sort import insertion_sort
 from counting_sort import counting_sort
-from quicksort import quicksort
+from quicksort import *
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -28,22 +26,10 @@ def runTests(n):
     quick_times = []
     tim_times = []
 
-    for i in range(1, n, n//10):
+    for i in range(1, n+1, n//20):
         sizes.append(i)
 
-        arr = generate_random_numbers(i, i)
-        selection_start = time.time()
-        selected = selection_sort(arr)
-        selection_time = time.time()-selection_start
-        selection_times.append(selection_time)
-
-        arr = generate_random_numbers(i, i)
-        insertion_start = time.time()
-        inserted = insertion_sort(arr)
-        insertion_time = time.time()-insertion_start
-        insertion_times.append(insertion_time)
-
-        arr = generate_random_numbers(i, i)
+        arr = np.array(generate_random_numbers(i, i))
         counting_start = time.time()
         counted = counting_sort(arr)
         counting_time = time.time()-counting_start
@@ -55,57 +41,33 @@ def runTests(n):
         quick_time = time.time()-quickstart
         quick_times.append(quick_time)
 
-        arr = generate_random_numbers(i, i)
+        arr = np.array(generate_random_numbers(i, i))
         timstart = time.time()
         arr.sort()
         tim_time = time.time()-timstart
         tim_times.append(tim_time)
 
-    return sizes, selection_times, insertion_times, counting_times, quick_times, tim_times
+    return sizes, counting_times, quick_times, tim_times
 
-def graphResults(sizes, selection_times, insertion_times, counting_times, quick_times, tim_times):
-    plt.plot(sizes, selection_times)
-    plt.suptitle('Selection Sort')
+def graphResults(sizes, counting_times, quick_times, tim_times):
+
+    plt.plot(sizes, counting_times, label = '"Counting" Sort')
+    plt.plot(sizes, quick_times, label = 'Quicksort')
+    plt.plot(sizes, tim_times, label = 'Built-In sort()')
+    plt.suptitle('Number of Values vs. Time')
     plt.xlabel('Number of Values')
     plt.ylabel('Time to Sort (Seconds)')
+    plt.legend()
     plt.show()
-
-    plt.plot(sizes, insertion_times)
-    plt.suptitle('Insertion Sort')
-    plt.xlabel('Number of Values')
-    plt.ylabel('Time to Sort (Seconds)')
-    plt.show()
-
-    plt.plot(sizes, counting_times)
-    plt.suptitle('"Counting" Sort')
-    plt.xlabel('Number of Values')
-    plt.ylabel('Time to Sort (Seconds)')
-    plt.show()
-
-    plt.plot(sizes, quick_times)
-    plt.suptitle('Quick Sort')
-    plt.xlabel('Number of Values')
-    plt.ylabel('Time to Sort (Seconds)')
-    plt.show()
-
-    plt.plot(sizes, tim_times)
-    plt.suptitle('Tim Sort')
-    plt.xlabel('Number of Values')
-    plt.ylabel('Time to Sort (Seconds)')
-    plt.show()
-
 
 def main():
-    sizes, selection_times, insertion_times, counting_times, quick_times, tim_times \
-    = runTests(10000)
+    sizes, counting_times, quick_times, tim_times = runTests(100000)
 
-    print(f'Selection times: {str(selection_times)}')
-    print(f'Insertion times: {str(insertion_times)}')
     print(f'Counting times: {str(counting_times)}')
     print(f'Quick times: {str(quick_times)}')
     print(f'Tim times: {str(tim_times)}')
 
-    graphResults(sizes, selection_times, insertion_times, counting_times, quick_times, tim_times)
+    graphResults(sizes, counting_times, quick_times, tim_times)
 
 
 if __name__=='__main__':
