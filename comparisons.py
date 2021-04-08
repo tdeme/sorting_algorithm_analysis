@@ -63,36 +63,24 @@ def runTests(n):
     return sizes, selection_times, insertion_times, counting_times, quick_times, tim_times
 
 def graphResults(sizes, selection_times, insertion_times, counting_times, quick_times, tim_times):
-    plt.plot(sizes, selection_times)
-    plt.suptitle('Selection Sort')
+    
+    plt.plot(sizes, selection_times, label = 'Selection Sort')
+    plt.plot(sizes, insertion_times, label = 'Insertion Sort')
+    plt.suptitle('Qudratic Sorting Algorithms')
     plt.xlabel('Number of Values')
     plt.ylabel('Time to Sort (Seconds)')
+    plt.legend()
     plt.show()
 
-    plt.plot(sizes, insertion_times)
-    plt.suptitle('Insertion Sort')
+
+    plt.plot(sizes, counting_times, label = '"Counting" Sort')
+    plt.plot(sizes, quick_times, label = 'Quicksort')
+    plt.plot(sizes, tim_times, label = 'Timsort (built-in sort list method)')
+    plt.suptitle('"Faster-Than-Quadratic" Sorting Algorithms')
     plt.xlabel('Number of Values')
     plt.ylabel('Time to Sort (Seconds)')
+    plt.legend()
     plt.show()
-
-    plt.plot(sizes, counting_times)
-    plt.suptitle('"Counting" Sort')
-    plt.xlabel('Number of Values')
-    plt.ylabel('Time to Sort (Seconds)')
-    plt.show()
-
-    plt.plot(sizes, quick_times)
-    plt.suptitle('Quick Sort')
-    plt.xlabel('Number of Values')
-    plt.ylabel('Time to Sort (Seconds)')
-    plt.show()
-
-    plt.plot(sizes, tim_times)
-    plt.suptitle('Tim Sort')
-    plt.xlabel('Number of Values')
-    plt.ylabel('Time to sort (Seconds)')
-    plt.show()
-
 
 def main():
     sizes, selection_times, insertion_times, counting_times, quick_times, tim_times \

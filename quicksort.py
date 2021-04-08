@@ -42,10 +42,11 @@ def quicksort(array, start, stop):
         if lefti<righti:
             array[lefti], array[righti] = array[righti], array[lefti]
 
-    array[stop], array[lefti] = array[lefti], array[stop]
+    array[lefti], array[stop] = array[stop], array[lefti]
 
     quicksort(array, start, lefti-1)
     quicksort(array, lefti+1, stop)
+    
     '''if len(array)<=1 or (len(array)==2 and array[0]<=array[1]):
     return array
 
