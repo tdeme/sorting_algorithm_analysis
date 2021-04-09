@@ -10,6 +10,7 @@ __version__ = '2021-03-15'
 
 import time
 import random
+import os
 from turtle import *
 
 class Value(object):
@@ -69,34 +70,41 @@ def generate_random_numbers(length, range_of_values):
     """
     return [random.randrange(range_of_values) for i in range(length)]
 
-def median(array, i1, i2, i3):
-    if (array[i1].getValue()<=array[i2].getValue() and array[i1].getValue()>=array[i3].getValue())\
-         or (array[i1].getValue()<=array[i3].getValue() and array[i1].getValue()>=array[i2].getValue()):
-        return i1
-    elif (array[i2].getValue()<=array[i1].getValue() and array[i2].getValue()>=array[i3].getValue())\
-         or (array[i2].getValue()<=array[i3].getValue() and array[i2].getValue()>=array[i1].getValue()):
-        return i2
-    else:
-        return i3
+
+def swap_turtles(array, t1, t2, LINE_WIDTH):
+    array[t1].setColor('red')
+    array[t2].setColor('red')
+    array[t1], array[t2] = array[t2], array[t1]
+    array[t1].theTurtle().goto(t1*LINE_WIDTH, 0)
+    array[t2].theTurtle().goto(t2*LINE_WIDTH, 0)
+    array[t1].setColor('white')
+    array[t2].setColor('white')
+
+def refresh():
+    os.system('clear')
+    print(f'Comparisons: {str(comparisons)} \nSwaps: {str(swaps)}')
     
 swaps = 0
+comparisons = 0
 
 def quicksort(array, start, stop, w, LINE_WIDTH):
+    global comparisons
+    comparisons+=1
+    refresh()
     if stop-start<1:
         return
     global swaps
+    comparisons+=1
+    refresh()
     if stop-start==1:
+        comparisons+=1
+        refresh()
         if array[start].getValue()<=array[stop].getValue():
             return
         else:
-            array[start].setColor('red')
-            array[stop].setColor('red')
-            array[start], array[stop] = array[stop], array[start]
-            array[start].theTurtle().goto(start*LINE_WIDTH, 0)
-            array[stop].theTurtle().goto(stop*LINE_WIDTH, 0)
-            array[start].setColor('white')
-            array[stop].setColor('white')
+            swap_turtles(array, start, stop, LINE_WIDTH)
             swaps+=1
+            refresh()
             return
 
     pivot = array[stop].getValue()
@@ -105,37 +113,26 @@ def quicksort(array, start, stop, w, LINE_WIDTH):
     righti = stop-1
 
     while lefti<righti:
+        comparisons+=2
+        refresh()
         while array[lefti].getValue()<=pivot and lefti<=righti:
             lefti+=1
+        comparisons+=2
+        refresh()
         while array[righti].getValue()>pivot and righti>lefti:
             righti-=1
+        comparisons+=1
+        refresh()
         if lefti<righti:
-            array[lefti].setColor('red')
-            array[righti].setColor('red')
-            array[lefti], array[righti] = array[righti], array[lefti]
-            array[lefti].theTurtle().goto(lefti*LINE_WIDTH, 0)
-            array[righti].theTurtle().goto(righti*LINE_WIDTH, 0)
-            array[lefti].setColor('white')
-            array[righti].setColor('white')
+            swap_turtles(array, lefti, righti, LINE_WIDTH)
             swaps+=1
-    if lefti==righti and array[righti].getValue()>pivot:
-        array[righti].setColor('red')
-        array[stop].setColor('red')
-        array[righti], array[stop] = array[stop], array[righti]
-        array[righti].theTurtle().goto(righti*LINE_WIDTH, 0)
-        array[stop].theTurtle().goto(stop*LINE_WIDTH, 0)
-        array[righti].setColor('white')
-        array[stop].setColor('white')
-        swaps+=1
+            refresh()
+        comparisons+=1
+        refresh()
     else:
-        array[lefti].setColor('red')
-        array[stop].setColor('red')        
-        array[stop], array[lefti] = array[lefti], array[stop]
-        array[lefti].theTurtle().goto(lefti*LINE_WIDTH, 0)
-        array[stop].theTurtle().goto(stop*LINE_WIDTH, 0)
-        array[lefti].setColor('white')
-        array[stop].setColor('white')
-        swaps+=1        
+        swap_turtles(array, lefti, stop, LINE_WIDTH)
+        swaps+=1   
+        refresh()     
 
     quicksort(array, start, lefti-1, w, LINE_WIDTH)
     quicksort(array, lefti+1, stop, w, LINE_WIDTH)
@@ -145,9 +142,13 @@ def selectionsort(nums, w, LINE_WIDTH):
     Selection Sort algorithm. Also moves those turtles to their
     new locations in the window.
     """
+    global comparisons
+    global swaps
     for i in range(len(nums)):
         smallestLoc = i
         for j in range(i, len(nums)):
+            comparisons+=1
+            refresh()
             if nums[j].getValue() < nums[smallestLoc].getValue():
                 smallestLoc = j
         nums[i].setColor("red") # color the turtles we're swapping
@@ -155,8 +156,8 @@ def selectionsort(nums, w, LINE_WIDTH):
         nums[smallestLoc], nums[i] = nums[i], nums[smallestLoc] # swap
         # Now move the turtles
         nums[smallestLoc].theTurtle().goto(smallestLoc * LINE_WIDTH, 0)
-        global swaps 
         swaps+=1
+        refresh()
         if i != smallestLoc:
             nums[smallestLoc].setColor("white")
         nums[i].theTurtle().goto(i * LINE_WIDTH, 0)
@@ -171,17 +172,20 @@ def main():
     values, w, LINE_WIDTH = init_screen(NUM_OF_VALUES)
 
     quicksort(values, 0, 99, w, LINE_WIDTH)
+    refresh()
+
+    #selectionsort(values, w, LINE_WIDTH)
+    #refresh()
     
-    for value in values:
-        value.setColor('lime')
+    values = [value.setColor('lime') for value in values]
         
     w.exitonclick()
     
     global swaps
+    global comparisons
 
-    print(f'Quicksort performed {str(swaps)} swaps to sort the array of {str(NUM_OF_VALUES)} integers.')
-    
-
+    print(f'Quicksort performed {str(comparisons)} comparisons and'\
+        f' {str(swaps)} swaps to sort the array of {str(NUM_OF_VALUES)} integers.')
 
 
 if __name__ == '__main__':
