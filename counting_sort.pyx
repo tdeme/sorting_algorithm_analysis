@@ -15,15 +15,15 @@ import time
 
 def counting_sort(l):
     new = []
-    occurances = {}
+    occurences = {}
     for integer in l:
-        if integer in occurances.keys():
-            occurances[integer]+=1
+        if integer in occurences.keys():
+            occurences[integer]+=1
         else:
-            occurances[integer] = 1
+            occurences[integer] = 1
     for i in range(len(l)):
-        if i in occurances.keys():
-            for x in range(occurances[i]):
+        if i in occurences.keys():
+            for x in range(occurences[i]):
                 new.append(i)
     return new
 

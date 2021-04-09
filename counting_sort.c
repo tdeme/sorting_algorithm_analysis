@@ -1238,7 +1238,7 @@ static const char __pyx_k_integer[] = "integer";
 static const char __pyx_k_version[] = "__version__";
 static const char __pyx_k_randrange[] = "randrange";
 static const char __pyx_k_2021_04_09[] = "2021-04-09";
-static const char __pyx_k_occurances[] = "occurances";
+static const char __pyx_k_occurences[] = "occurences";
 static const char __pyx_k_counting_sort[] = "counting_sort";
 static const char __pyx_k_Theo_Demetriades[] = "Theo Demetriades";
 static const char __pyx_k_counting_sort_pyx[] = "counting_sort.pyx";
@@ -1262,7 +1262,7 @@ static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_main_2;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_new;
-static PyObject *__pyx_n_s_occurances;
+static PyObject *__pyx_n_s_occurences;
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_random;
 static PyObject *__pyx_n_s_randrange;
@@ -1287,7 +1287,7 @@ static PyObject *__pyx_codeobj__4;
  * 
  * def counting_sort(l):             # <<<<<<<<<<<<<<
  *     new = []
- *     occurances = {}
+ *     occurences = {}
  */
 
 /* Python wrapper */
@@ -1306,7 +1306,7 @@ static PyObject *__pyx_pw_13counting_sort_1counting_sort(PyObject *__pyx_self, P
 
 static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_l) {
   PyObject *__pyx_v_new = NULL;
-  PyObject *__pyx_v_occurances = NULL;
+  PyObject *__pyx_v_occurences = NULL;
   PyObject *__pyx_v_integer = NULL;
   Py_ssize_t __pyx_v_i;
   CYTHON_UNUSED PyObject *__pyx_v_x = NULL;
@@ -1333,7 +1333,7 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
  * 
  * def counting_sort(l):
  *     new = []             # <<<<<<<<<<<<<<
- *     occurances = {}
+ *     occurences = {}
  *     for integer in l:
  */
   __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
@@ -1344,21 +1344,21 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
   /* "counting_sort.pyx":18
  * def counting_sort(l):
  *     new = []
- *     occurances = {}             # <<<<<<<<<<<<<<
+ *     occurences = {}             # <<<<<<<<<<<<<<
  *     for integer in l:
- *         if integer in occurances.keys():
+ *         if integer in occurences.keys():
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_occurances = ((PyObject*)__pyx_t_1);
+  __pyx_v_occurences = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
   /* "counting_sort.pyx":19
  *     new = []
- *     occurances = {}
+ *     occurences = {}
  *     for integer in l:             # <<<<<<<<<<<<<<
- *         if integer in occurances.keys():
- *             occurances[integer]+=1
+ *         if integer in occurences.keys():
+ *             occurences[integer]+=1
  */
   if (likely(PyList_CheckExact(__pyx_v_l)) || PyTuple_CheckExact(__pyx_v_l)) {
     __pyx_t_1 = __pyx_v_l; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
@@ -1403,13 +1403,13 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
     __pyx_t_4 = 0;
 
     /* "counting_sort.pyx":20
- *     occurances = {}
+ *     occurences = {}
  *     for integer in l:
- *         if integer in occurances.keys():             # <<<<<<<<<<<<<<
- *             occurances[integer]+=1
+ *         if integer in occurences.keys():             # <<<<<<<<<<<<<<
+ *             occurences[integer]+=1
  *         else:
  */
-    __pyx_t_4 = __Pyx_PyDict_Keys(__pyx_v_occurances); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_Keys(__pyx_v_occurences); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_v_integer, __pyx_t_4, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -1418,60 +1418,60 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
 
       /* "counting_sort.pyx":21
  *     for integer in l:
- *         if integer in occurances.keys():
- *             occurances[integer]+=1             # <<<<<<<<<<<<<<
+ *         if integer in occurences.keys():
+ *             occurences[integer]+=1             # <<<<<<<<<<<<<<
  *         else:
- *             occurances[integer] = 1
+ *             occurences[integer] = 1
  */
       __Pyx_INCREF(__pyx_v_integer);
       __pyx_t_4 = __pyx_v_integer;
-      __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_occurances, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 21, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_occurences, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_t_7, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(PyDict_SetItem(__pyx_v_occurances, __pyx_t_4, __pyx_t_8) < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_occurences, __pyx_t_4, __pyx_t_8) < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "counting_sort.pyx":20
- *     occurances = {}
+ *     occurences = {}
  *     for integer in l:
- *         if integer in occurances.keys():             # <<<<<<<<<<<<<<
- *             occurances[integer]+=1
+ *         if integer in occurences.keys():             # <<<<<<<<<<<<<<
+ *             occurences[integer]+=1
  *         else:
  */
       goto __pyx_L5;
     }
 
     /* "counting_sort.pyx":23
- *             occurances[integer]+=1
+ *             occurences[integer]+=1
  *         else:
- *             occurances[integer] = 1             # <<<<<<<<<<<<<<
+ *             occurences[integer] = 1             # <<<<<<<<<<<<<<
  *     for i in range(len(l)):
- *         if i in occurances.keys():
+ *         if i in occurences.keys():
  */
     /*else*/ {
-      if (unlikely(PyDict_SetItem(__pyx_v_occurances, __pyx_v_integer, __pyx_int_1) < 0)) __PYX_ERR(0, 23, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_occurences, __pyx_v_integer, __pyx_int_1) < 0)) __PYX_ERR(0, 23, __pyx_L1_error)
     }
     __pyx_L5:;
 
     /* "counting_sort.pyx":19
  *     new = []
- *     occurances = {}
+ *     occurences = {}
  *     for integer in l:             # <<<<<<<<<<<<<<
- *         if integer in occurances.keys():
- *             occurances[integer]+=1
+ *         if integer in occurences.keys():
+ *             occurences[integer]+=1
  */
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "counting_sort.pyx":24
  *         else:
- *             occurances[integer] = 1
+ *             occurences[integer] = 1
  *     for i in range(len(l)):             # <<<<<<<<<<<<<<
- *         if i in occurances.keys():
- *             for x in range(occurances[i]):
+ *         if i in occurences.keys():
+ *             for x in range(occurences[i]):
  */
   __pyx_t_2 = PyObject_Length(__pyx_v_l); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 24, __pyx_L1_error)
   __pyx_t_9 = __pyx_t_2;
@@ -1479,15 +1479,15 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
     __pyx_v_i = __pyx_t_10;
 
     /* "counting_sort.pyx":25
- *             occurances[integer] = 1
+ *             occurences[integer] = 1
  *     for i in range(len(l)):
- *         if i in occurances.keys():             # <<<<<<<<<<<<<<
- *             for x in range(occurances[i]):
+ *         if i in occurences.keys():             # <<<<<<<<<<<<<<
+ *             for x in range(occurences[i]):
  *                 new.append(i)
  */
     __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyDict_Keys(__pyx_v_occurances); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_Keys(__pyx_v_occurences); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_t_4, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -1497,14 +1497,14 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
 
       /* "counting_sort.pyx":26
  *     for i in range(len(l)):
- *         if i in occurances.keys():
- *             for x in range(occurances[i]):             # <<<<<<<<<<<<<<
+ *         if i in occurences.keys():
+ *             for x in range(occurences[i]):             # <<<<<<<<<<<<<<
  *                 new.append(i)
  *     return new
  */
       __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_occurances, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_occurences, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
@@ -1554,8 +1554,8 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
         __pyx_t_4 = 0;
 
         /* "counting_sort.pyx":27
- *         if i in occurances.keys():
- *             for x in range(occurances[i]):
+ *         if i in occurences.keys():
+ *             for x in range(occurences[i]):
  *                 new.append(i)             # <<<<<<<<<<<<<<
  *     return new
  * 
@@ -1567,8 +1567,8 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
 
         /* "counting_sort.pyx":26
  *     for i in range(len(l)):
- *         if i in occurances.keys():
- *             for x in range(occurances[i]):             # <<<<<<<<<<<<<<
+ *         if i in occurences.keys():
+ *             for x in range(occurences[i]):             # <<<<<<<<<<<<<<
  *                 new.append(i)
  *     return new
  */
@@ -1576,17 +1576,17 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
       /* "counting_sort.pyx":25
- *             occurances[integer] = 1
+ *             occurences[integer] = 1
  *     for i in range(len(l)):
- *         if i in occurances.keys():             # <<<<<<<<<<<<<<
- *             for x in range(occurances[i]):
+ *         if i in occurences.keys():             # <<<<<<<<<<<<<<
+ *             for x in range(occurences[i]):
  *                 new.append(i)
  */
     }
   }
 
   /* "counting_sort.pyx":28
- *             for x in range(occurances[i]):
+ *             for x in range(occurences[i]):
  *                 new.append(i)
  *     return new             # <<<<<<<<<<<<<<
  * 
@@ -1602,7 +1602,7 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
  * 
  * def counting_sort(l):             # <<<<<<<<<<<<<<
  *     new = []
- *     occurances = {}
+ *     occurences = {}
  */
 
   /* function exit code */
@@ -1615,7 +1615,7 @@ static PyObject *__pyx_pf_13counting_sort_counting_sort(CYTHON_UNUSED PyObject *
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_new);
-  __Pyx_XDECREF(__pyx_v_occurances);
+  __Pyx_XDECREF(__pyx_v_occurences);
   __Pyx_XDECREF(__pyx_v_integer);
   __Pyx_XDECREF(__pyx_v_x);
   __Pyx_XGIVEREF(__pyx_r);
@@ -1837,7 +1837,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_main_2, __pyx_k_main_2, sizeof(__pyx_k_main_2), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
-  {&__pyx_n_s_occurances, __pyx_k_occurances, sizeof(__pyx_k_occurances), 0, 0, 1, 1},
+  {&__pyx_n_s_occurences, __pyx_k_occurences, sizeof(__pyx_k_occurences), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_random, __pyx_k_random, sizeof(__pyx_k_random), 0, 0, 1, 1},
   {&__pyx_n_s_randrange, __pyx_k_randrange, sizeof(__pyx_k_randrange), 0, 0, 1, 1},
@@ -1864,9 +1864,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * def counting_sort(l):             # <<<<<<<<<<<<<<
  *     new = []
- *     occurances = {}
+ *     occurences = {}
  */
-  __pyx_tuple_ = PyTuple_Pack(6, __pyx_n_s_l, __pyx_n_s_new, __pyx_n_s_occurances, __pyx_n_s_integer, __pyx_n_s_i, __pyx_n_s_x); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(6, __pyx_n_s_l, __pyx_n_s_new, __pyx_n_s_occurences, __pyx_n_s_integer, __pyx_n_s_i, __pyx_n_s_x); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
   __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_counting_sort_pyx, __pyx_n_s_counting_sort, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 16, __pyx_L1_error)
@@ -2214,7 +2214,7 @@ if (!__Pyx_RefNanny) {
  * 
  * def counting_sort(l):             # <<<<<<<<<<<<<<
  *     new = []
- *     occurances = {}
+ *     occurences = {}
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_13counting_sort_1counting_sort, NULL, __pyx_n_s_counting_sort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
